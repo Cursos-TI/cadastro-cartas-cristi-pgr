@@ -13,24 +13,25 @@ int main(){
 
   // variaveis para duas carta ( 2 cidades)
 
-    char PAIS[15], COD01[4], COD02[4];
-    char estado[15], cidade01[15], cidade02[15];
+    char PAIS[15], PAIS2[15], COD01[4], COD02[4];
+    char estado1[15], estado2[15], cidade01[15], cidade02[15];
     char A01_cidade[15], A02_cidade[15];
     int A01_Populc, A02_Populc;
     float A01_area, A02_area;
     float A01_PIB, A02_PIB;
     int A01_NPTurist, A02_NPTurist;
-
+    float A01_PIBPC, A02_PIBPC;
+    float A01_DENPO, A02_DENPO;
 
   // Área para entrada de dados
 
-  printf("Qual o pais da carta?:");
+  // CARTA 1
+
+  printf("Qual o pais da carta1:");
   scanf("%s", PAIS);
 
   printf("Qual o estado?:");
-  scanf("%s", estado);
-
-  // CIDADE 1
+  scanf("%s", estado1);
 
   printf("Qual a cidade?:");
   scanf("%s", cidade01);
@@ -44,71 +45,102 @@ int main(){
 
   printf("Qual deve ser o codigo da carta:");
   scanf("%s", COD01);
+
 //populaçao
   printf("Qual a populaçao da cidade(%s):", cidade01);
   scanf("%d", &A01_Populc);
+
 //area
   printf("Qual a area da cidade(%s):", cidade01);
   scanf("%f", &A01_area);
+
 //PIB
   printf("Qual o PIB da cidade(%s):", cidade01);
   scanf("%f", &A01_PIB);
+
 // Numero pontos turisticos
   printf("Qual o numero de pontos turisticos da cidade(%s):", cidade01);
   scanf("%d", &A01_NPTurist);
 
- //DADOS CIDADE02
+ 
+  //DADOS CARTA 2
 
-  printf("*CADASTRO NOVA CIDADE\n");
+  printf("Qual o pais da carta 2:");
+  scanf("%s", PAIS2);
+
+  printf("Qual o estado?:");
+  scanf("%s", estado2);
+
   printf("Qual a cidade?:");
   scanf("%s", cidade02);
 
   printf("Precisamo agora dos dados abaixo\n");
+  printf("* Lembrando o codigo da carta deve começar com uma letra!\n");
 
   printf("Qual deve ser o codigo da carta:");
   scanf("%s", COD02);
+
 //populaçao
   printf("Qual a populaçao da cidade(%s):", cidade02);
   scanf("%d", &A02_Populc);
+
 //area
   printf("Qual a area da cidade(%s):", cidade02);
   scanf("%f", &A02_area);
+
 //PIB
   printf("Qual o PIB da cidade(%s):", cidade02);
   scanf("%f", &A02_PIB);
+
 // Numero pontos turisticos
   printf("Qual o numero de pontos turisticos da cidade(%s):", cidade02);
   scanf("%d", &A02_NPTurist);
 
-  // Área para exibição dos dados da cidade
+// Calculo PIBPERCAPITA e DENSIDADE POPULACIONAL
+
+// Calculo PIBPERCAPITA
+A01_PIBPC = A01_PIB / (float)A01_Populc;
+A02_PIBPC = A02_PIB / (float)A02_Populc;
+
+//DENSIDADE POPULACIONAL
+A01_DENPO = (float)A01_Populc / A01_area;
+A02_DENPO = (float)A02_Populc / A02_area;
+
+// Área para exibição dos dados da cidade
   printf("\n");
   printf("*As cartas cadastrada sao!*\n\n");
+
 
 // Exibir carta 1
   printf("\n");
   printf("*Carta 1\n");
   printf("\n");
   printf("Pais: %s\n", PAIS);
-  printf("Estado: %s\n", estado);
+  printf("Estado: %s\n", estado1);
   printf("Cidade: %s\n", cidade01);
   printf("COD: %s\n", COD01);
   printf("Populaçao: %d\n", A01_Populc);
-  printf("Area: %f\n", A01_area);
-  printf("PIB: %f\n", A01_PIB);
+  printf("Area: %.2f\n", A01_area);
+  printf("PIB: %.2f\n", A01_PIB);
   printf("Numero de pontos turisticos: %d\n", A01_NPTurist);
+  printf("Densidade Populacional:: %.2f\n", A01_DENPO);
+  printf("PIB per capita:: %.2f\n", A01_PIBPC);
+
 
 // Exibir carta 2
   printf("\n");
   printf("*Carta 2\n");
   printf("\n");
-  printf("Pais: %s\n", PAIS);
-  printf("Estado: %s\n", estado);
+  printf("Pais: %s\n", PAIS2);
+  printf("Estado: %s\n", estado2);
   printf("Cidade: %s\n", cidade02);
   printf("COD: %s\n", COD02);
   printf("Populaçao: %d\n", A02_Populc);
-  printf("Area: %f\n", A02_area);
-  printf("PIB: %f\n", A02_PIB);
+  printf("Area: %.2f\n", A02_area);
+  printf("PIB: %.2f\n", A02_PIB);
   printf("Numero de pontos turisticos: %d\n", A02_NPTurist);
+  printf("Densidade Populacional:: %.2f\n", A02_DENPO);
+  printf("PIB per capita:: %.2f\n", A02_PIBPC);
 
 
 return 0;
