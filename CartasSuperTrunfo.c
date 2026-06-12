@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <string.h>
 
 // Desafio Super Trunfo - Países
 // Tema 1 - Cadastro das cartas
@@ -12,7 +15,13 @@ printf("****************************************\n");
 }
 int main(){
 
+  setlocale(LC_ALL, "Portuguese");
+
   introducao();
+  
+     // variavel opcao menu
+    int opcao;
+
   printf("Precisamo cadastrar novas cartas para o jogo SUPER TRUNFO\n\n");
   printf("Entre com os dados das cartas conforme solicitado!\n\n");
 
@@ -34,21 +43,24 @@ int main(){
 
   // CARTA 1
 
-  printf("Qual o pais da carta 1:");
-  scanf("%s", PAIS);
+    printf("Qual o pais da carta 1: ");
+    fgets(PAIS, sizeof(PAIS), stdin);
+    PAIS[strcspn(PAIS, "\n")] = '\0';
 
-  printf("Qual o estado ?:");
-  scanf("%s", estado1);
+    printf("Qual o estado?: ");
+    fgets(estado1, sizeof(estado1), stdin);
+    estado1[strcspn(estado1, "\n")] = '\0';
 
-  printf("Qual a cidade ?:");
-  scanf("%s", cidade01);
-
-
-  printf("** Lembrando o codigo da carta deve começar com uma letra!\n\n");
-
-  //DADOS CIDADE01
+    printf("Qual a cidade?: ");
+    fgets(cidade01, sizeof(cidade01), stdin);
+    cidade01[strcspn(cidade01, "\n")] = '\0';
 
   printf("Precisamo agora dos dados abaixo!\n\n");
+  printf("***************************AVISO******************************\n");
+  printf("*** Lembrando o codigo da carta deve começar com uma letra!***\n\n");
+  printf("**************************************************************\n");
+
+  //DADOS CIDADE01
 
   printf("Qual deve ser o codigo da carta: ");
   scanf("%s", COD01);
@@ -68,21 +80,28 @@ int main(){
 // Numero pontos turisticos
   printf("\nQual o numero de pontos turisticos da cidade(%s): ", cidade01);
   scanf("%d", &A01_NPTurist);
+ while (getchar() != '\n'); // LIMPA O BUFFER-LIXO que fica, para o prox nao ler ou enter ou algo indesejavel.
 
  
   //DADOS CARTA 2
 
-  printf("Qual o pais da carta 2:");
-  scanf("%s", PAIS2);
+    printf("**Agora os dados carta 2**\n");
+    printf("Qual o pais da carta 2: ");
+    fgets(PAIS2, sizeof(PAIS2), stdin);
+    PAIS2[strcspn(PAIS2, "\n")] = '\0';
 
-  printf("Qual o estado?:");
-  scanf("%s", estado2);
+    printf("Qual o estado?: ");
+    fgets(estado2, sizeof(estado2), stdin);
+    estado2[strcspn(estado2, "\n")] = '\0';
 
-  printf("Qual a cidade?:");
-  scanf("%s", cidade02);
+    printf("Qual a cidade?: ");
+    fgets(cidade02, sizeof(cidade02), stdin);
+    cidade02[strcspn(cidade02, "\n")] = '\0';
 
   printf("Precisamo agora dos dados abaixo\n");
-  printf("* Lembrando o codigo da carta deve começar com uma letra!\n");
+  printf("***************************AVISO******************************\n");
+  printf("*** Lembrando o codigo da carta deve começar com uma letra!***\n\n");
+  printf("**************************************************************\n");
 
   printf("Qual deve ser o codigo da carta:");
   scanf("%s", COD02);
@@ -121,6 +140,138 @@ SP2 = A02_Populc + A02_area + A02_PIBPC + A02_PIB + (float)A02_NPTurist + (1 / A
   printf("\n");
   printf("*As cartas cadastrada sao!*\n\n");
 
+      // menu para escolha da comparaçao
+  printf("************************************************\n");
+  printf("**Menu para escolha de atributo a ser comparado**\n\n");
+  printf("1 - Populaçao\n");
+  printf("2 - Area\n");
+  printf("3 - PIB\n");
+  printf("4 - Numero de pontos turisticos\n");
+  printf("5 - Densidade populacional\n");
+  printf("6 - PIB per capita\n");
+  printf("7 - Super poder\n");
+  printf("************************************************\n");
+  printf("Escolha uma opçao: ");
+  scanf("%d", &opcao);
+  printf("************************************************\n");
+
+switch(opcao){
+case 1:
+ if(A01_Populc > A02_Populc){
+    printf("Area CARTA 1: %d\n", A01_Populc);
+    printf("Area CARTA 2: %d\n", A02_Populc);
+    printf("Carta 1 Ganhou!!\n");
+}else if(A01_Populc < A02_Populc) {
+    printf("Area CARTA 1: %d\n", A01_Populc);
+    printf("Area CARTA 2: %d\n", A02_Populc);
+    printf("Carta 2 Ganhou!!\n");
+    } else{
+        printf("Empate os atributos sao iguais\n");
+        printf("Area CARTA 1: %d\n", A01_Populc);
+        printf("Area CARTA 2: %d\n", A02_Populc);
+    }
+break;
+
+case 2:
+    if(A01_area > A02_area){
+    printf("Area CARTA 1: %.2f\n", A01_area);
+    printf("Area CARTA 2: %.2f\n", A02_area);
+    printf("Carta 1 Ganhou!!\n");
+}else if(A01_area < A02_area) {
+    printf("Area CARTA 1: %.2f\n", A01_area);
+    printf("Area CARTA 2: %.2f\n", A02_area);
+    printf("Carta 2 Ganhou!!\n");
+    } else{
+        printf("Empate os atributos sao iguais\n");
+        printf("Area CARTA 1: %.2f\n", A01_PIB);
+        printf("Area CARTA 2: %.2f\n", A02_PIB);
+    }
+break;
+
+case 3:
+if(A01_PIB > A02_PIB){
+    printf("PIB CARTA 1: %.2f\n", A01_PIB);
+    printf("PIB CARTA 2: %.2f\n", A02_PIB);
+    printf("Carta 1 Ganhou!!\n");
+}else if(A01_PIB < A02_PIB) {
+    printf("PIB CARTA 1: %.2f\n", A01_PIB);
+    printf("PIB CARTA 2: %.2f\n", A02_PIB);
+    printf("Carta 2 Ganhou!!\n");
+    } else{
+        printf("Empate os atributos sao iguais\n");
+        printf("PIB CARTA 1: %.2f\n", A01_PIB);
+        printf("PIB CARTA 2: %.2f\n", A02_PIB);
+    }
+break;
+
+case 4:
+    if(A01_NPTurist > A02_NPTurist){
+    printf("Numero de pontos turisticos CARTA 1: %d\n", A01_NPTurist);
+    printf("Numero de pontos turisticos CARTA 2: %d\n", A02_NPTurist);
+    printf("Carta 1 Ganhou!!\n");
+}else if(A02_NPTurist < A02_NPTurist) {
+    printf("Numero de pontos turisticos CARTA 1: %d\n", A01_NPTurist);
+    printf("Numero de pontos turisticos CARTA 2: %d\n", A02_NPTurist);
+    printf("Carta 2 Ganhou!!\n");
+    } else{
+        printf("Empate os atributos sao iguais\n");
+        printf("Numero de pontos turisticos CARTA 1: %d\n", A01_NPTurist);
+        printf("Numero de pontos turisticos CARTA 2: %d\n", A02_NPTurist);
+    }
+break;
+
+case 5:
+if(A01_DENPO > A02_DENPO){
+    printf("Densidade populacional CARTA 1: %.2f\n", A01_DENPO);
+    printf("Densidade populacional CARTA 2: %.2f\n", A02_DENPO);
+    printf("Carta 2 Ganhou!!\n");
+}else if(A01_PIBPC < A02_PIBPC) {
+    printf("Densidade populacional CARTA 1: %.2f\n", A01_DENPO);
+    printf("Densidade populacional CARTA 2: %.2f\n", A02_DENPO);
+    printf("Carta 1 Ganhou!!\n");
+    } else{
+        printf("Empate os atributos sao iguais\n");
+        printf("Densidade populacional CARTA 1: %.2f\n", A01_DENPO);
+        printf("Densidade populacional CARTA 2: %.2f\n", A02_DENPO);
+    }
+break;
+
+case 6:
+if(A01_PIBPC > A02_PIBPC){
+    printf("PIB per capita CARTA 1: %.2f\n", A01_PIBPC);
+    printf("PIB per capita CARTA 2: %.2f\n", A02_PIBPC);
+    printf("Carta 1 Ganhou!!\n");
+}else if(A01_PIBPC < A02_PIBPC) {
+    printf("PIB per capita CARTA 1: %.2f\n", A01_PIBPC);
+    printf("PIB per capita CARTA 2: %.2f\n", A02_PIBPC);
+    printf("Carta 2 Ganhou!!\n");
+    } else{
+        printf("Empate os atributos sao iguais\n");
+        printf("PIB per capita CARTA 1: %.2f\n", A01_PIBPC);
+        printf("PIB per capita CARTA 2: %.2f\n", A02_PIBPC);
+    }
+break;
+
+case 7:
+    if(SP1 > SP2){
+    printf("Super poder CARTA 1: %.2f\n", SP1);
+    printf("Super poder CARTA 2: %.2f\n", SP2);
+    printf("Carta 1 Ganhou!!\n");
+}else if (SP1 < SP2){
+    printf("Super poder CARTA 1: %.2f\n", SP1);
+    printf("Super poder CARTA 2: %.2f\n", SP2);
+    printf("Carta 2 Ganhou!!\n");
+    } else{
+        printf("Empate! Os atributos sao iguais\n");
+        printf("Super poder CARTA 1: %.2f\n", SP1);
+        printf("Super poder CARTA 2: %.2f\n", SP2);
+    }
+break;
+
+default:
+    printf("Opçao invalida\n");
+break;
+}
 
 // Exibir carta 1
 
@@ -152,8 +303,9 @@ SP2 = A02_Populc + A02_area + A02_PIBPC + A02_PIB + (float)A02_NPTurist + (1 / A
   printf("PIB per capita:: %.2f\n", A02_PIBPC);
   printf("Super poder: %f\n\n", SP2);
 
-  // Comparaçao 
 
+
+  /*
   printf("*Comparação das Cartas\n\n");
   printf("Populaçao: Carta %d venceu\n", A01_Populc > A02_Populc);
   printf("Area: Carta %d venceu\n", A01_area > A02_area);
@@ -162,6 +314,7 @@ SP2 = A02_Populc + A02_area + A02_PIBPC + A02_PIB + (float)A02_NPTurist + (1 / A
   printf("Densidade Populacional:: Carta %d venceu\n", A01_DENPO > A02_DENPO);
   printf("PIB per capita:: Carta %d venceu\n", A01_PIBPC > A02_PIBPC);
   printf("Super poder: Carta %d venceu\n", SP1 > SP2);
+*/
 
 return 0;
 
