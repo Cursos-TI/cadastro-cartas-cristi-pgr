@@ -57,7 +57,7 @@ int main(){
 
   printf("Precisamo agora dos dados abaixo!\n\n");
   printf("***************************AVISO******************************\n");
-  printf("*** Lembrando o codigo da carta deve começar com uma letra!***\n\n");
+  printf("*** Lembrando o codigo da carta deve começar com uma letra!***\n");
   printf("**************************************************************\n");
 
   //DADOS CIDADE01
@@ -100,7 +100,7 @@ int main(){
 
   printf("Precisamo agora dos dados abaixo\n");
   printf("***************************AVISO******************************\n");
-  printf("*** Lembrando o codigo da carta deve começar com uma letra!***\n\n");
+  printf("*** Lembrando o codigo da carta deve começar com uma letra!***\n");
   printf("**************************************************************\n");
 
   printf("Qual deve ser o codigo da carta:");
@@ -150,6 +150,7 @@ SP2 = A02_Populc + A02_area + A02_PIBPC + A02_PIB + (float)A02_NPTurist + (1 / A
   printf("5 - Densidade populacional\n");
   printf("6 - PIB per capita\n");
   printf("7 - Super poder\n");
+  printf("8 - Mostrar as cartas!\n");
   printf("************************************************\n");
   printf("Escolha uma opçao: ");
   scanf("%d", &opcao);
@@ -267,9 +268,43 @@ case 7:
         printf("Super poder CARTA 2: %.2f\n", SP2);
     }
 break;
+case 8:
+// Exibir carta 1
+
+  printf("*Carta 1\n\n");
+  printf("Pais: %s\n", PAIS);
+  printf("Estado: %s\n", estado1);
+  printf("Cidade: %s\n", cidade01);
+  printf("COD: %s\n", COD01);
+  printf("Populaçao: %d\n", A01_Populc);
+  printf("Area: %.2f\n", A01_area);
+  printf("PIB: %.2f\n", A01_PIB);
+  printf("Numero de pontos turisticos: %d\n", A01_NPTurist);
+  printf("Densidade Populacional:: %.2f\n", A01_DENPO);
+  printf("PIB per capita:: %.2f\n", A01_PIBPC);
+  printf("Super poder: %f\n\n", SP1);
+
+// Exibir carta 2
+
+  printf("*Carta 2\n\n");
+  printf("Pais: %s\n", PAIS2);
+  printf("Estado: %s\n", estado2);
+  printf("Cidade: %s\n", cidade02);
+  printf("COD: %s\n", COD02);
+  printf("Populaçao: %d\n", A02_Populc);
+  printf("Area: %.2f\n", A02_area);
+  printf("PIB: %.2f\n", A02_PIB);
+  printf("Numero de pontos turisticos: %d\n", A02_NPTurist);
+  printf("Densidade Populacional:: %.2f\n", A02_DENPO);
+  printf("PIB per capita:: %.2f\n", A02_PIBPC);
+  printf("Super poder: %f\n\n", SP2);
+  
+break;
 
 default:
+
     printf("Opçao invalida\n");
+
 break;
 }
 
@@ -303,21 +338,7 @@ break;
   printf("PIB per capita:: %.2f\n", A02_PIBPC);
   printf("Super poder: %f\n\n", SP2);
 
-
-
-  /*
-  printf("*Comparação das Cartas\n\n");
-  printf("Populaçao: Carta %d venceu\n", A01_Populc > A02_Populc);
-  printf("Area: Carta %d venceu\n", A01_area > A02_area);
-  printf("PIB: Carta %d venceu\n", A01_PIB > A02_PIB);
-  printf("Numero de pontos turisticos: Carta %d venceu\n", A01_NPTurist > A02_NPTurist);
-  printf("Densidade Populacional:: Carta %d venceu\n", A01_DENPO > A02_DENPO);
-  printf("PIB per capita:: Carta %d venceu\n", A01_PIBPC > A02_PIBPC);
-  printf("Super poder: Carta %d venceu\n", SP1 > SP2);
-*/
-
 return 0;
-
 
 }
 
